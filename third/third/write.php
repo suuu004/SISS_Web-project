@@ -6,6 +6,8 @@
 
 <body>
     <?php
+        session_start();
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $host = 'localhost';
             $user = 'root';
@@ -20,25 +22,25 @@
 
             // 사용자로부터 전송된 데이터 가져오기
             $member_email = $_POST['email'];
-            $member_name = $_POST['name'];
+            $member_nickname = $_POST['name'];
             $member_password = $_POST['password'];
-            $member_password_confirm = $_POST['password_confirm'];
 
             // SQL 쿼리 작성 (마지막 쉼표 제거)
             $sql = "INSERT INTO member01 (
                         member_email,
-                        member_name,
-                        member_password,
-                        member_password_confirm
+                        member_nickname,
+                        member_password
                     ) VALUES (
                         '$member_email',
-                        '$member_name',
-                        '$member_password',
-                        '$member_password_confirm'
+                        '$member_nickname',
+                        '$member_password'
                     )";
 
             // SQL 실행
             if ($mysqli->query($sql)) {
+                // 회원가입 성공 시 세션에 사용자 닉네임 저장
+                $_SESSION['nickname'] = $member_nickname;
+
                 echo '<script>alert("회원가입 성공")</script>';
             } else {
                 echo '<script>alert("회원가입 실패")</script>';
@@ -52,5 +54,4 @@
         location.href = "log-in.html";
     </script>
 </body>
-
 </html>
