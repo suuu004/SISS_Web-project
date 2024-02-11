@@ -18,7 +18,7 @@ function sendVerificationEmail($to, $token) {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'qkrwldk0407@gmail.com'; // 보내는 이메일 계정
-        $mail->Password = 'fkdm mzcz npjy fbni'; // 보내는 이메일 계정의 암호
+        $mail->Password = 'pw'; // 보내는 이메일 계정의 암호
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
@@ -53,7 +53,7 @@ function sendPasswordResetEmail($to, $token) {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'qkrwldk0407@gmail.com'; // 보내는 이메일 계정
-        $mail->Password = 'fkdm mzcz npjy fbni'; // 보내는 이메일 계정의 암호
+        $mail->Password = 'pw'; // 보내는 이메일 계정의 암호
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
