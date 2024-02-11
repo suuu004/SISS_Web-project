@@ -1,0 +1,25 @@
+<!-- reset-pw.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호 재설정</title>
+</head>
+<body>
+    <h2>비밀번호 재설정</h2>
+    <form action="update-pw.php" method="post">
+        <div>
+            <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
+            <input type="text" name="token" placeholder="토큰">
+            <input type="password" name="new_password" placeholder="새로운 비밀번호">
+        </div>
+        <div>
+            <input type="password" name="confirm_password" placeholder="비밀번호 확인">
+        </div>
+        <div>
+            <button type="submit">비밀번호 재설정</button>
+        </div>
+    </form>
+</body>
+</html>
