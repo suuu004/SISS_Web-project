@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이수 학점 입력</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>이수 학점 입력</h2>
+        <form action="graduate_credits.php" method="post">
+            <div class="form-group">
+                <label for="total_credits">총 이수 학점</label>
+                <input type="number" name="total_credits" id="total_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="major_required_credits">전공필수</label>
+                <input type="number" name="major_required_credits" id="major_required_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="major_optional_credits">전공선택</label>
+                <input type="number" name="major_optional_credits" id="major_optional_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="liberal_arts_required_credits">교양필수</label>
+                <input type="number" name="liberal_arts_required_credits" id="liberal_arts_required_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="liberal_arts_elective_credits">교양선택</label>
+                <input type="number" name="liberal_arts_elective_credits" id="liberal_arts_elective_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="area1_credits">제 1 영역</label>
+                <input type="number" name="area1_credits" id="area1_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="area2_credits">제 2 영역</label>
+                <input type="number" name="area2_credits" id="area2_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="area3_credits">제 3 영역</label>
+                <input type="number" name="area3_credits" id="area3_credits" required> 점
+            </div>
+
+            <div class="form-group">
+                <label for="area4_credits">제 4 영역</label>
+                <input type="number" name="area4_credits" id="area4_credits" required> 점
+            </div>
+
+            <div class="button-container">
+                <button type="submit">완료</button>
+                <button onclick="location.href='grade.php'">돌아가기</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
