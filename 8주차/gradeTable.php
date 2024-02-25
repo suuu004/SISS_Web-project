@@ -123,7 +123,7 @@
 
 <!-- 홈으로 돌아가는 버튼 -->
 <div class="btn-container">
-  <a href="index.html" class="btn">홈으로 돌아가기</a>
+  <a href="home.php" class="btn">홈으로 돌아가기</a>
 </div>
 
 </body>
