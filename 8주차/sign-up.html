@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h2>회원가입</h2>
+        <form action="write.php" method="post">
+                <div>
+                    <input type="text" name="email" id="email" 
+                    placeholder="이메일(ID)"/>
+                </div><br>
+                <div>
+                    <input type="text" name="name" id="name" 
+                    placeholder="닉네임"/>
+                </div><br>
+                <div>
+                    <input type="password" name="password" id="password" 
+                    placeholder="비밀번호"/>
+                </div><br>
+                <div>
+                    <input type="password" name="password_confirm" id="password_confirm" 
+                    placeholder="비밀번호 확인"/>
+                </div><br>
+                <div>
+                    <label for="name">전공 선택</label>
+                    <input type="radio" name="department" value="1">심화
+                    <input type="radio" name="department" value="2">복수
+                    <input type="radio" name="department" value="3">연계
+                    <input type="radio" name="department" value="4">부전공
+                    <input type="radio" name="department" value="5">기타
+                </div><br>
+
+                <div class="button">
+                    <button type="submit">회원가입</button>
+                </div>
+        </form>
+
+    </body>
+
+</html>
