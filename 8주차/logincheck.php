@@ -7,11 +7,7 @@
     <?php
         session_start();
 
-        $host = 'localhost';
-        $user = 'root';
-        $pw = '1111';
-        $dbName = 'privacy';
-        $mysqli = new mysqli($host, $user, $pw, $dbName);
+        require_once('dbconn.php');
 
         $id = $_POST['email'];
         $pw = $_POST['password'];
