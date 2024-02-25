@@ -1,25 +1,120 @@
-<!-- reset-pw.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>비밀번호 재설정</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비밀번호 재설정</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
 </head>
 <body>
+
+<div class="container">
     <h2>비밀번호 재설정</h2>
-    <form action="update-pw.php" method="post">
-        <div>
-            <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-            <input type="text" name="token" placeholder="토큰">
-            <input type="password" name="new_password" placeholder="새로운 비밀번호">
+    <form id="resetForm" action="update-pw.php" method="post">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="token" placeholder="토큰" required>
+                <input type="password" name="new_password" placeholder="새로운 비밀번호" required>
+                <input type="password" name="confirm_password" placeholder="비밀번호 확인" required>
+            </div>
         </div>
-        <div>
-            <input type="password" name="confirm_password" placeholder="비밀번호 확인">
-        </div>
-        <div>
+        <div class="button-group">
             <button type="submit">비밀번호 재설정</button>
         </div>
     </form>
+</div>
+
+<script>
+// 페이지 로드 시 실행되는 함수
+window.onload = function() {
+    // 현재 URL 가져오기
+    var currentUrl = window.location.href;
+    
+    // URL에서 파라미터 제거
+    var cleanUrl = removeUrlParameter(currentUrl, 'email');
+    cleanUrl = removeUrlParameter(cleanUrl, 'token');
+    
+    // 새로운 URL로 변경 (페이지의 URL을 수정하지만, 실제로 새로고침되지는 않습니다.)
+    window.history.replaceState({}, document.title, cleanUrl);
+};
+
+// URL에서 특정 파라미터를 제거하는 함수
+function removeUrlParameter(url, parameter) {
+    var urlParts = url.split('?');
+
+    if (urlParts.length >= 2) {
+        var prefix = encodeURIComponent(parameter) + '=';
+        var parts = urlParts[1].split(/[&;]/g);
+
+        // 파라미터를 찾아서 제거
+        for (var i = parts.length; i-- > 0;) {
+            if (parts[i].lastIndexOf(prefix, 0) !== -1) {
+                parts.splice(i, 1);
+            }
+        }
+
+        // 새로운 URL 반환
+        return urlParts[0] + (parts.length > 0 ? '?' + parts.join('&') : '');
+    }
+    return url;
+}
+</script>
+
 </body>
 </html>
