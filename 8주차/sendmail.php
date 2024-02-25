@@ -35,7 +35,7 @@ function sendVerificationEmail($to, $token) {
         // 메일 보내기
         $mail->send();
         echo "편지를 보냈습니다.";
-        echo "<script language=javascript> alert('메일인증성공!'); location.replace('success.html'); </script>";
+        echo "<script language=javascript> alert('메일을 보냈습니다.'); location.replace('success.html'); </script>";
     } catch (Exception $e) {
         echo "이메일을 보내는 데 문제가 발생했습니다. 오류 메시지: {$mail->ErrorInfo}";
     }
