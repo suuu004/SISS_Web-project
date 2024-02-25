@@ -32,6 +32,22 @@
     text-align: center;
     margin-top: 50px;
   }
+  .btn-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
 </style>
 </head>
 <body>
@@ -46,7 +62,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+  <tr>
       <td>A+</td>
       <td>4.3</td>
     </tr>
@@ -104,6 +120,11 @@
     </tr>
   </tbody>
 </table>
+
+<!-- 홈으로 돌아가는 버튼 -->
+<div class="btn-container">
+  <a href="index.html" class="btn">홈으로 돌아가기</a>
+</div>
 
 </body>
 </html>
