@@ -9,19 +9,24 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9;
   }
   table {
     border-collapse: collapse;
     width: 80%;
     margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   th, td {
-    border: 1px solid black;
-    padding: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
     text-align: center;
   }
   th {
     background-color: #f2f2f2;
+    font-weight: bold;
   }
   h1 {
     text-align: center;
@@ -47,7 +52,7 @@
     </tr>
     <tr>
       <td>A0</td>
-      <td>4</td>
+      <td>4.0</td>
     </tr>
     <tr>
       <td>A-</td>
@@ -59,7 +64,7 @@
     </tr>
     <tr>
       <td>B0</td>
-      <td>3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <td>B-</td>
@@ -71,7 +76,7 @@
     </tr>
     <tr>
       <td>C0</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <td>C-</td>
@@ -83,7 +88,7 @@
     </tr>
     <tr>
       <td>D0</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <td>D-</td>
@@ -91,7 +96,7 @@
     </tr>
     <tr>
       <td>F</td>
-      <td>0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <td>P</td>
