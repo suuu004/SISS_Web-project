@@ -123,7 +123,89 @@ $mysqli->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학점 계산 페이지</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+
+        .credits-table {
+            margin-top: 30px;
+        }
+
+        .credits-table th,
+        .credits-table td {
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>학점 계산</h2>
+
+        <!-- 버튼 추가 -->
+        <div class="text-center">
+            <button class="btn btn-primary" onclick="showGraduatedCredits()">이수 학점 보기</button>
+            <button class="btn btn-primary" onclick="showRemainingCredits()">남은 학점 보기</button>
+            <button class="btn btn-secondary" onclick="location.href='grade.php'">돌아가기</button>
+        </div>
+
+        <!-- 이수 학점 -->
+        <div id="graduated_credits" style="display: none;">
+            <h3 class="mt-4">이수 학점</h3>
+            <table class="table credits-table">
+                <tbody>
+                    <tr><th>구분</th><th>학점</th><th>상태</th></tr>
+                    <?php
+                    echo "<tr><td>총 학점</td><td>$total_credits</td><td>$total_satisfied</td></tr>";
+                    echo "<tr><td>전공필수</td><td>$major_required_credits</td><td>$major_required_satisfied</td></tr>";
+                    echo "<tr><td>전공선택</td><td>$major_optional_credits</td><td>$major_optional_satisfied</td></tr>";
+                    echo "<tr><td>교양필수</td><td>$liberal_arts_required_credits</td><td>$liberal_arts_required_satisfied</td></tr>";
+                    echo "<tr><td>교양선택</td><td>$liberal_arts_elective_credits</td><td>$liberal_arts_elective_satisfied</td></tr>";
+                    echo "<tr><td>제 1 영역</td><td>$area1_credits</td><td>$area1_satisfied</td></tr>";
+                    echo "<tr><td>제 2 영역</td><td>$area2_credits</td><td>$area2_satisfied</td></tr>";
+                    echo "<tr><td>제 3 영역</td><td>$area3_credits</td><td>$area3_satisfied</td></tr>";
+                    echo "<tr><td>제 4 영역</td><td>$area4_credits</td><td>$area4_satisfied</td></tr>";
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 남은 학점 -->
+        <div id="remaining_credits" style="display: none;">
+            <h3 class="mt-4">남은 학점</h3>
+            <table class="table credits-table">
+                <tbody>
+                    <tr><th>구분</th><th>학점</th><th>상태</th></tr>
+                    <?php
+                    echo "<tr><td>총 학점</td><td>$remaining_total_credits</td><td>$total_satisfied</td></tr>";
+                    echo "<tr><td>전공필수</td><td>$remaining_major_required_credits</td><td>$major_required_satisfied</td></tr>";
+                    echo "<tr><td>전공선택</td><td>$remaining_major_optional_credits</td><td>$major_optional_satisfied</td></tr>";
+                    echo "<tr><td>교양필수</td><td>$remaining_liberal_arts_required_credits</td><td>$liberal_arts_required_satisfied</td></tr>";
+                    echo "<tr><td>교양선택</td><td>$remaining_liberal_arts_elective_credits</td><td>$liberal_arts_elective_satisfied</td></tr>";
+                    echo "<tr><td>제 1 영역</td><td>$remaining_area1_credits</td><td>$area1_satisfied</td></tr>";
+                    echo "<tr><td>제 2 영역</td><td>$remaining_area2_credits</td><td>$area2_satisfied</td></tr>";
+                    echo "<tr><td>제 3 영역</td><td>$remaining_area3_credits</td><td>$area3_satisfied</td></tr>";
+                    echo "<tr><td>제 4 영역</td><td>$remaining_area4_credits</td><td>$area4_satisfied</td></tr>";
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <script>
         function showGraduatedCredits() {
             document.getElementById('graduated_credits').style.display = 'block';
@@ -135,45 +217,5 @@ $mysqli->close();
             document.getElementById('remaining_credits').style.display = 'block';
         }
     </script>
-</head>
-<body>
-    <h2>학점 계산</h2>
-
-    <!-- 버튼 추가 -->
-    <button onclick="showGraduatedCredits()">이수 학점 보기</button>
-    <button onclick="showRemainingCredits()">남은 학점 보기</button>
-    <button onclick="location.href='grade.php'">돌아가기</button>
-
-    <!-- 이수 학점 -->
-    <div id="graduated_credits" style="display: none;">
-        <h3>이수 학점</h3>
-        <?php
-        echo "<p>총 학점 : $total_credits ($total_satisfied)</p>";
-        echo "<p>전공필수 : $major_required_credits ($major_required_satisfied)</p>";
-        echo "<p>전공선택 : $major_optional_credits ($major_optional_satisfied)</p>";
-        echo "<p>교양필수 : $liberal_arts_required_credits ($liberal_arts_required_satisfied)</p>";
-        echo "<p>교양선택 : $liberal_arts_elective_credits ($liberal_arts_elective_satisfied)</p>";
-        echo "<p>제 1 영역 : $area1_credits ($area1_satisfied)</p>";
-        echo "<p>제 2 영역 : $area2_credits ($area2_satisfied)</p>";
-        echo "<p>제 3 영역 : $area3_credits ($area3_satisfied)</p>";
-        echo "<p>제 4 영역 : $area4_credits ($area4_satisfied)</p>";
-        ?>
-    </div>
-
-    <!-- 남은 학점 -->
-    <div id="remaining_credits" style="display: none;">
-        <h3>남은 학점</h3>
-        <?php
-        echo "<p>총 학점 : $remaining_total_credits ($total_satisfied)</p>";
-        echo "<p>전공필수 : $remaining_major_required_credits ($major_required_satisfied)</p>";
-        echo "<p>전공선택 : $remaining_major_optional_credits ($major_optional_satisfied)</p>";
-        echo "<p>교양필수 : $remaining_liberal_arts_required_credits ($liberal_arts_required_satisfied)</p>";
-        echo "<p>교양선택 : $remaining_liberal_arts_elective_credits ($liberal_arts_elective_satisfied)</p>";
-        echo "<p>제 1 영역 : $remaining_area1_credits ($area1_satisfied)</p>";
-        echo "<p>제 2 영역 : $remaining_area2_credits ($area2_satisfied)</p>";
-        echo "<p>제 3 영역 : $remaining_area3_credits ($area3_satisfied)</p>";
-        echo "<p>제 4 영역 : $remaining_area4_credits ($area4_satisfied)</p>";
-        ?>
-    </div>
 </body>
 </html>
